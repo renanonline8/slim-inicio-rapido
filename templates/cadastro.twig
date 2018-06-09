@@ -1,16 +1,16 @@
 {% extends "base.twig" %} {% block title %} Cadastre-se {% endblock title %} {% block content %}
 <div class="container">
-    <form>
+    <form method="POST" action="criar_usuario">
         <div class="form-group row">
             <h1>Crie seu login!</h1>
         </div>
         <div class="form-group row">
-          <label for="">E-mail:</label>
-          <input type="email" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="Digite seu e-mail...">
+          <label for="email">E-mail:</label>
+          <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelpId" placeholder="Digite seu e-mail...">
         </div>
         <div class="form-group row">
-          <label for="">Senha:</label>
-          <input type="password" class="form-control" name="" id="" placeholder="">
+          <label for="senha">Senha:</label>
+          <input type="password" class="form-control" name="senha" id="senha" placeholder="Digite sua senha...">
         </div>
         <div class="form-group row">
             <button type="submit" class="btn btn-primary btn-block btn-lg">Cadastrar</button>
