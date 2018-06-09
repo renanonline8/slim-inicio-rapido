@@ -1,0 +1,20 @@
+{% extends "base.twig" %} {% block title %} Cadastre-se {% endblock title %} {% block content %}
+<div class="container">
+    <form>
+        <div class="form-group row">
+            <h1>Crie seu login!</h1>
+        </div>
+        <div class="form-group row">
+          <label for="">E-mail:</label>
+          <input type="email" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="Digite seu e-mail...">
+        </div>
+        <div class="form-group row">
+          <label for="">Senha:</label>
+          <input type="password" class="form-control" name="" id="" placeholder="">
+        </div>
+        <div class="form-group row">
+            <button type="submit" class="btn btn-primary btn-block btn-lg">Cadastrar</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}
