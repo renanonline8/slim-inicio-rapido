@@ -1,12 +1,14 @@
 <?php
 
+$appIni = parse_ini_file(__DIR__ . "/../../app.ini", true);
+
 $config['displayErrorDetails'] = true;
 
-\ActiveRecord\Config::initialize(function($cfg) {
+\ActiveRecord\Config::initialize(function($cfg) use ($appIni) {
     $cfg->set_model_directory(__DIR__ . '/../App/Models');
     $cfg->set_connections(
         array(
-            'development' => 'mysql://inicioSlim:ad23ol12@localhost/slim_inicio_rapido'
+            'development' => $appIni['bd_active_record']['development']
         )
     );
 });
