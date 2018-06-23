@@ -4,22 +4,25 @@ namespace App\Login;
 final class Usuario
 {
     private $login;
-    private $id;
-    private $email;
+    private $dados;
+
+    public function __set($prop, $valor)
+    {
+        $this->dados[$prop] = $valor;
+    }
+
+    public function __get($prop)
+    {
+        if (isset($this->dados[$prop])) {
+            return $this->dados[$prop];
+        } else {
+            return null;
+        }
+    }
 
     public function defineLogin($login)
     {
         $this->login = $login;
-    }
-
-    public function defineId($id)
-    {
-        $this->id = $id;
-    }
-
-    public function defineEmail($email)
-    {
-        $this->email = $email;
     }
 
     public function obtemLogin()
@@ -27,22 +30,11 @@ final class Usuario
         return $this->login;
     }
 
-    public function obtemID()
-    {
-        return $this->id;
-    }
-
-    public function obtemEmail()
-    {
-        return $this->email;
-    }
-
     public function retornaDados()
     {
         return array(
             'login' => $this->login,
-            'id' => $this->id,
-            'email' => $this->email
+            'dados' => $this->dados
         );
     }
 }

@@ -1,42 +1,37 @@
 <?php
 namespace App\Sessao;
 
-use App\Login\Usuario;
-
 final class Sessao
 {
     private $status;
+    private $dadosSessao;
 
-    public function iniciar(Usuario $usuario): Bool
+    public function __construct(Bool $status)
     {
-        if ($usuario->obtemLogin()) {
-            $_SESSION = array (
-                'login' => true,
-                'data' => array(
-                    'id' => $usuario->obtemID(),
-                    'email' => $usuario->obtemEmail()
-                )
-            );
-            $this->status = true;
-        } else {
-            $this->status = false;
-        }
+        $this->status = $status;
+    }
 
+    public function __set($prop, $valor)
+    {
+        $this->dadosSessao[$prop] = $valor;
+    }
+
+    public function __get($prop)
+    {
+        if(isset($this->dadosSessao[$prop])) {
+            return $this->dadosSessao[$prop];
+        } else {
+            return null;
+        }
+    }
+
+    public function checaStatus()
+    {
         return $this->status;
     }
 
-    public function verificar() 
+    public function retDadosSessao(): Array
     {
-        ob_start();
-
-        if (isset($_SESSION['login'])) {
-            $this->status = true;
-        } else {
-            $this->status = false;
-        }
-
-        ob_end_flush();
-
-        return $this->status;
+        return $this->dadosSessao;
     }
 }

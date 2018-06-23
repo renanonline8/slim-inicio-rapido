@@ -19,8 +19,8 @@ final class LoginSite implements InterfaceLogin
     {
         $usuario = new Usuario();
         $usuario->defineLogin(true);
-        $usuario->defineEmail('renanonline8@gmail.com');
-        $usuario->defineId('XYZ');
+        $usuario->email = 'renanonline8@gmail.com';
+        $usuario->id = 'XYZ';
         return $usuario;
     }
 }

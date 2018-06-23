@@ -9,6 +9,6 @@ final class ControllerDashboard extends Controller
 {
     public function dash(Request $request, Response $response, Array $args)
     {
-        return $this->twig->render('dashboard.twig');
+        return $this->view->render($response, 'dashboard.twig');
     }
 }

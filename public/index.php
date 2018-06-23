@@ -4,6 +4,8 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 require __DIR__ . '/../vendor/autoload.php';
 
+session_start();
+
 require_once __DIR__ . '/../src/includes/config.php';
 
 $app = new \Slim\App(['settings' => $config]);

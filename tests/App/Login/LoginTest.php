@@ -31,8 +31,10 @@ class LoginTest extends TestCase
 
         $esperado = array(
             'login' => true,
-            'id' => 'XYZ',
-            'email' => 'renanonline8@gmail.com'
+            'dados' => array (
+                'id' => 'XYZ',
+                'email' => 'renanonline8@gmail.com'
+            )
         );
         
         $atual = $usuarioObj->retornaDados();
