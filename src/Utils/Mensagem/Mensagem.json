@@ -1,10 +1,11 @@
 {
+    "_comment": "Em tipo usar primary, secondary, success, danger, warning, info, light, dark",
     "1" : {
         "mensagem" : "Teste",
-        "tipo" : "aviso"
+        "tipo" : "primary"
     },
     "2" : {
         "mensagem" : "Erro",
-        "tipo" : "erro"
+        "tipo" : "danger"
     }
 }

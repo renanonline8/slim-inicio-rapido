@@ -13,7 +13,7 @@ final class Mensagem
         $array = json_decode($json, true);
         if (empty($array[$codigo])) {
             $this->codigo = 99999;
-            $this->tipo = 'desconhecido';
+            $this->tipo = 'secondary';
             $this->mensagem = 'Mensagem desconhecida';
         } else {
             $this->codigo = $codigo;

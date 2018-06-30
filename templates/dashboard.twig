@@ -1,3 +1,7 @@
 {% extends "baseNav.twig" %} {% block title %} Dashboard {% endblock title %} {% block content %}
-<p>Id: {{sessao.id}}</p>
+
+{{ include('mensagens.twig') }}
+
+<h1>Id: {{sessao.id}}</h1>
+
 {% endblock content %}
