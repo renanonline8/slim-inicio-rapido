@@ -1,0 +1,10 @@
+{
+    "1" : {
+        "mensagem" : "Teste",
+        "tipo" : "aviso"
+    },
+    "2" : {
+        "mensagem" : "Erro",
+        "tipo" : "erro"
+    }
+}

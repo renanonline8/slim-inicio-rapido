@@ -1,10 +1,4 @@
 <?php
-$container['twig'] = function($c) {
-    $loader = new Twig_Loader_Filesystem(__DIR__ . '/../../templates');
-    $twig = new Twig_Environment($loader);
-    return $twig;
-};
-
 $container['view'] = function ($container) {
     $view = new \Slim\Views\Twig(__DIR__ . '/../../templates');
 
@@ -37,6 +31,11 @@ $container['debugLog'] = function($c) use ($container) {
         new Monolog\Handler\StreamHandler($caminho, Monolog\Logger::DEBUG)
     );
     return $log;
+};
+
+$container['twigArgs'] = function($c) use ($container) {
+    $twigArgs = new \Utils\TwigUtils\TwigArgs();
+    return $twigArgs;
 };
 
 //Controllers
