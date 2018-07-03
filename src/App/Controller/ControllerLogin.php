@@ -7,6 +7,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use App\Models\Usuario;
 use App\Login\LoginSite;
 use App\Sessao\SessaoNormal;
+use App\Validacao\ValidacaoRedireciona;
 
 final class ControllerLogin extends Controller
 {
@@ -32,22 +33,25 @@ final class ControllerLogin extends Controller
             $request->getParam('senha')
         );
         
-        if (!$login->consultaUsuario()) {
-            return $response->withRedirect('../login?mensagens=4');    
-        }
-        
-        if (!$login->verificarSenha()) {
-            return $response->withRedirect('../login?mensagens=5');
+        $validaLogin = new ValidacaoRedireciona('../login');
+        $validaLogin->adicionaRegra($login->consultaUsuario(), 4);
+        $validaLogin->adicionaRegra($login->verificarSenha(), 5);
+        if (!$validaLogin->valida()) {
+            return $response->withRedirect($validaLogin->retornaURLErros());
         }
         
         $usuario = $login->logar();
+        
         $sessaoNormal = new SessaoNormal();
         $sessao = $sessaoNormal->iniciar($usuario);
-        if ($sessao->checaStatus()) {
-            return $response->withRedirect('../dashboard');
-        } else {
-            return $response->withRedirect('../login');
+        
+        $validaSessao = new ValidacaoRedireciona('../login');
+        $validaSessao->adicionaRegra($sessao->checaStatus(), 6);
+        if (!$validaSessao->valida()) {
+            return $response->withRedirect($validaSessao->retornaURLErros());
         }
+        
+        return $response->withRedirect('../dashboard');
     }
 
     public function criarUsuario(Request $request, Response $response, Array $args)

@@ -19,5 +19,9 @@
     "5" : {
         "mensagem" : "A senha está incorreta",
         "tipo" : "danger"
+    },
+    "6" : {
+        "mensagem" : "Ocorreu um erro ao entrar na sessão, tente novmente",
+        "tipo" : "danger"
     }
 }
