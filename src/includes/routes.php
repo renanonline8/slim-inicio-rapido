@@ -14,6 +14,6 @@ $app->post('/login/criar_usuario', 'ControllerLogin:criarUsuario')->setName('cri
 $app->get('/login/sair', 'ControllerLogin:sair')->setName('login-sair');
 
 $app->group('', function () {
-    $this->get('/dashboard', 'ControllerDashboard:dash')
-        ->setName('dashboard');
+    $this->get('/dashboard', 'ControllerDashboard:dash')->setName('dashboard');
+    $this->get('/usuario', 'ControllerUsuario:home')->setName('usuario-dados');
 })->add(new SessaoNormalMid($container));

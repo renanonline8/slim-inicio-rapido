@@ -7,3 +7,7 @@ $container['ControllerLogin'] = function($c) {
 $container['ControllerDashboard'] = function($c) {
     return new \App\Controller\ControllerDashboard($c);
 };
+
+$container['ControllerUsuario'] = function($c) {
+    return new \App\Controller\ControllerUsuario($c);
+};

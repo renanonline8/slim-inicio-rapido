@@ -31,12 +31,14 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="{{ base_url() }}/usuario"><i class="fa fa-user" aria-hidden="true"></i> Dados</a>
                             <a class="dropdown-item" href="{{ base_url() }}/login/sair"><i class="fa fa-close" aria-hidden="true"></i> Sair</a>
                         </div>
                     </li>
                 </ul>
             </div>
         </nav>
+        {{ include('mensagens.twig') }}
         {% block content %}{% endblock %}
     </div>
     <!-- Optional JavaScript -->
