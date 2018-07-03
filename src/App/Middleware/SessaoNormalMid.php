@@ -14,7 +14,7 @@ final class SessaoNormalMid extends Middleware implements InterfaceMiddleware
         $sessaoNormal = new SessaoNormal();
         $sessao = $sessaoNormal->verificar();
         if (!$sessao->checaStatus()) {
-            return $response->withRedirect('login');
+            return $response->withRedirect('login?mensagens=3');
         }
         $this->twigArgs->adcSessao($sessao);
         $response = $next($request, $response);

@@ -12,17 +12,17 @@ final class ControllerLogin extends Controller
 {
     public function login(Request $request, Response $response, Array $args)
     {
-        return $this->view->render($response, 'login.twig');
+        return $this->view->render($response, 'login.twig', $this->twigArgs->retArgs());
     }
 
     public function cadastro(Request $request, Response $response, Array $args)
     {
-        return $this->view->render($response, 'cadastro.twig');
+        return $this->view->render($response, 'cadastro.twig', $this->twigArgs->retArgs());
     }
 
     public function esqueceuSenha(Request $request, Response $response, Array $args)
     {
-        return $this->view->render($response, 'esqueceuSenha.twig');
+        return $this->view->render($response, 'esqueceuSenha.twig', $this->twigArgs->retArgs());
     }
 
     public function entrar(Request $request, Response $response, Array $args)
@@ -31,6 +31,15 @@ final class ControllerLogin extends Controller
             $request->getParam('email'),
             $request->getParam('senha')
         );
+        
+        if (!$login->consultaUsuario()) {
+            return $response->withRedirect('../login?mensagens=4');    
+        }
+        
+        if (!$login->verificarSenha()) {
+            return $response->withRedirect('../login?mensagens=5');
+        }
+        
         $usuario = $login->logar();
         $sessaoNormal = new SessaoNormal();
         $sessao = $sessaoNormal->iniciar($usuario);

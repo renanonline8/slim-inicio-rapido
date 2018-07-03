@@ -7,5 +7,17 @@
     "2" : {
         "mensagem" : "Erro",
         "tipo" : "danger"
+    },
+    "3" : {
+        "mensagem" : "Faça o login para acessar esse conteúdo",
+        "tipo": "primary"
+    },
+    "4" : {
+        "mensagem" : "E-mail não está cadastrado",
+        "tipo" : "danger"
+    },
+    "5" : {
+        "mensagem" : "A senha está incorreta",
+        "tipo" : "danger"
     }
 }
