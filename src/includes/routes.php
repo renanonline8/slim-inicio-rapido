@@ -2,6 +2,9 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \App\Middleware\SessaoNormalMid;
+use \App\Middleware\MensagemMid;
+
+$app->add(new MensagemMid($container));
 
 $app->get('/login', 'ControllerLogin:login')->setName('login');
 $app->get('/login/cadastro', 'ControllerLogin:cadastro')->setName('login-cadastro');

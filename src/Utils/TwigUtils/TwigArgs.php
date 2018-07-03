@@ -16,12 +16,12 @@ final class TwigArgs
         $this->args['dados'] = array();
     }
 
-    public function adcMensagem(Mensagem $mensagem): Void
+    public function adcMensagem(Mensagem $mensagem)
     {
         array_push($this->args['mensagem'], $mensagem->serialize());  
     }
 
-    public function adcSessao(Sessao $sessao): Void
+    public function adcSessao(Sessao $sessao)
     {
         $this->args['sessao'] = $sessao->retDadosSessao();
     }
@@ -31,7 +31,7 @@ final class TwigArgs
         $this->args['dados'][$campo] = $valor;   
     }
     
-    public function retArgs():Array
+    public function retArgs()
     {
         return $this->args;
     }
