@@ -3,6 +3,7 @@ namespace Utils\TwigUtils;
 
 use App\Sessao\Sessao;
 use Utils\Mensagem\Mensagem;
+use Exception;
 
 final class TwigArgs
 {
@@ -31,8 +32,17 @@ final class TwigArgs
         $this->args['dados'][$campo] = $valor;   
     }
     
-    public function retArgs()
+    public function retArgs($campo = '')
     {
-        return $this->args;
+        if (!empty($campo)) {
+            if (!isset($this->args[$campo])) {
+                throw new Exception('Campo indisponível');
+            } else {
+                return $this->args[$campo];
+            }
+        } else {
+            return $this->args;
+        }
+        
     }
 }

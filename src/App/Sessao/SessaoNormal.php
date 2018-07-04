@@ -15,6 +15,7 @@ final class SessaoNormal implements InterfaceSessao
             $dadosSessao = $usuario->retornaDados();
             $sessao = new Sessao(true);
             $sessao->id = $dadosSessao['dados']['id'];
+            $sessao->email = $dadosSessao['dados']['email'];
         } else {
             $sessao = new Sessao(false);
         }
@@ -27,6 +28,7 @@ final class SessaoNormal implements InterfaceSessao
         if (isset($_SESSION['login'])) {
             $sessao = new Sessao(true);
             $sessao->id = $_SESSION['dados']['id'];
+            $sessao->email = $_SESSION['dados']['email'];
         } else {
             $sessao = new Sessao(false);
         }

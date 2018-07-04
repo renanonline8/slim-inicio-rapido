@@ -1,0 +1,20 @@
+{% extends "baseNav.twig" %} {% block title %} Dashboard {% endblock title %} {% block content %}
+
+<h1>Alterar e-mail do usuário</h1>
+<form>
+  <div class="form-group">
+    <label for="emailAtual">Email Atual:</label>
+    <input type="email" class="form-control" id="emailAtual" placeholder="{{ sessao.email }}" readonly disabled>
+  </div>
+  <div class="form-group">
+    <label for="emailNovo">Novo Email:</label>
+    <input type="email" class="form-control" id="emailNovo" placeholder="Digite o novo email" required autofocus>
+  </div>
+  <div class="form-group">
+    <label for="senha">Senha:</label>
+    <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Alterar Email</button>
+</form>
+
+{% endblock content %}

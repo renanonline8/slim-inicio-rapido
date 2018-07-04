@@ -16,4 +16,7 @@ $app->get('/login/sair', 'ControllerLogin:sair')->setName('login-sair');
 $app->group('', function () {
     $this->get('/dashboard', 'ControllerDashboard:dash')->setName('dashboard');
     $this->get('/usuario', 'ControllerUsuario:home')->setName('usuario-dados');
+    $this->get('/usuario/alterar_email/{id}', 'ControllerUsuario:alterarEmail')->setName('usuario-email');
+    $this->get('/usuario/alterar_senha/{id}', 'ControllerUsuario:alterarSenha')->setName('usuario-senha');
+    $this->get('/usuario/excluir_conta/{id}', 'ControllerUsuario:excluirConta')->setName('usuario-excluir');
 })->add(new SessaoNormalMid($container));

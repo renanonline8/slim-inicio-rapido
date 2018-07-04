@@ -11,4 +11,19 @@ final class ControllerUsuario extends Controller
     {
         return $this->view->render($response, 'usuario-dados.twig', $this->twigArgs->retArgs());
     }
+    
+    public function alterarEmail(Request $request, Response $response, Array $args)
+    {
+        return $this->view->render($response, 'usuario-email.twig', $this->twigArgs->retArgs());
+    }
+    
+    public function alterarSenha(Request $request, Response $response, Array $args)
+    {
+        return $this->view->render($response, 'usuario-senha.twig', $this->twigArgs->retArgs());
+    }
+    
+    public function excluirConta(Request $request, Response $response, Array $args)
+    {
+        return $this->view->render($response, 'usuario-excluir.twig', $this->twigArgs->retArgs());
+    }
 }
