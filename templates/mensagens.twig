@@ -1,0 +1,5 @@
+{% for msg in mensagem %}
+<div class="alert alert-{{msg.tipo}}" role="alert">
+    <strong>{{ msg.mensagem }}</strong>
+</div>
+{% endfor %}

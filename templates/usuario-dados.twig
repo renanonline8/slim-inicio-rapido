@@ -1,0 +1,13 @@
+{% extends "baseNav.twig" %} {% block title %} Dashboard {% endblock title %} {% block content %}
+
+<h1>Dados do usuário</h1>
+<p>Altere aqui os seu, email, senha ou exclua sua conta de nossa base de dados.</p>
+<p><b>Email: </b></Email:>{{sessao.email}} </p>
+<div class="btn-group" role="group" aria-label="Funções">
+  <a href="{{ path_for('usuario-email', { 'id': sessao.id }) }}" class="btn btn-light">Alterar E-mail</a>
+  <a href="{{ path_for('usuario-senha', { 'id': sessao.id }) }}" class="btn btn-light">Alterar Senha</a>
+  <a href="{{ path_for('usuario-excluir', { 'id': sessao.id }) }}" class="btn btn-light">Excluir Conta</a>
+</div>
+
+
+{% endblock content %}

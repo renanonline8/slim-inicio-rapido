@@ -1,0 +1,27 @@
+{
+    "_comment": "Em tipo usar primary, secondary, success, danger, warning, info, light, dark",
+    "1" : {
+        "mensagem" : "Teste",
+        "tipo" : "primary"
+    },
+    "2" : {
+        "mensagem" : "Erro",
+        "tipo" : "danger"
+    },
+    "3" : {
+        "mensagem" : "Faça o login para acessar esse conteúdo",
+        "tipo": "primary"
+    },
+    "4" : {
+        "mensagem" : "E-mail não está cadastrado",
+        "tipo" : "danger"
+    },
+    "5" : {
+        "mensagem" : "A senha está incorreta",
+        "tipo" : "danger"
+    },
+    "6" : {
+        "mensagem" : "Ocorreu um erro ao entrar na sessão, tente novmente",
+        "tipo" : "danger"
+    }
+}
