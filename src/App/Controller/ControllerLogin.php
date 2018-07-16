@@ -68,6 +68,7 @@ final class ControllerLogin extends Controller
         $usuario->id_externo = uniqid();
         $usuario->email = $request->getParam('email');
         $usuario->senha = $senhaHash;
+        $usuario->nome = $request->getParam('nome');
         $usuario->save();
 
         //Retornar para a página de login
