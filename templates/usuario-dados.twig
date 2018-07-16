@@ -2,7 +2,8 @@
 
 <h1>Dados do usuário</h1>
 <p>Altere aqui os seu, email, senha ou exclua sua conta de nossa base de dados.</p>
-<p><b>Email: </b></Email:>{{sessao.email}} </p>
+<p><b>Nome: </b></Email:>{{dados.usuario.nome}} </p>
+<p><b>Email: </b></Email:>{{dados.usuario.email}} </p>
 <div class="btn-group" role="group" aria-label="Funções">
   <a href="{{ path_for('usuario-email', { 'id': sessao.id }) }}" class="btn btn-light">Alterar E-mail</a>
   <a href="{{ path_for('usuario-senha', { 'id': sessao.id }) }}" class="btn btn-light">Alterar Senha</a>
