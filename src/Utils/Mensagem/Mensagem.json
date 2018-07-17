@@ -27,5 +27,13 @@
     "7" : {
         "mensagem" : "Dados alterados com sucesso",
         "tipo" : "success"
+    },
+    "8" : {
+        "mensagem" : "A senha cadastrada não foi confirmada corretamente",
+        "tipo" : "danger"
+    },
+    "9" : {
+        "mensagem" : "Senha alterada com sucesso",
+        "tipo" : "success"
     }
 }

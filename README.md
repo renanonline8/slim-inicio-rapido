@@ -16,8 +16,44 @@ Para criação de um novo site com login
 
 Serve para verificar se a algum erro e gerar uma url com os erros para podermos redirecionar para o site de tratamentos.
 
-Na construção, você deve passar o caminho base do url. Após isso, você deve ser adicionar as regras usando o adiciona(). 
-valida() checa se todas as validações derão certo, e o método retornaURLErros, retorna a URL para ser utilizada no redirecionamento.
+#### Método __construct($url)
+Na construção, você deve passar o caminho base do url através do parametro $url, pode usar pathfor para obter link por nome da rota
+
+#### Método adiciona($regra, $codRegra)
+Você deve ser adicionar as regras usando o adiciona().
+
+O parametro regra você deve passar true ou false onde true irá passar, aqui recomenda-se usar o que você irá validar.
+
+O parâmetro $codRegra, você deve passar o código da mensagens que será retornado caso a validação não seja aprovada. Use os codigos de Mensagem.json.
+
+#### Método valida()
+Checa se todas as validações derão certo e retorna true caso esteja todas corretas ou false caso alguma não esteja correta.
+
+#### Método retortnaURLErros()
+Retorna a URL com as mensagens de erro, pode ser usada em conjunto com $response->withRedirect();
+
+#### Exemplo
+
+```php
+use App\Validacao\ValidacaoRedireciona;
+
+$validacao = new ValidacaoRedireciona(
+  $this->router->pathFor(
+    'nome-rota',
+     array ('id' => $id_rota) //Opcional
+  )
+);
+
+/**
+ * A regra deve ser um boleano onde true passa e false para
+ **/
+$validacao->adicionaRegra($regra1, $codErro);
+$validacao->adicionaRegra($regra2, $codErro);
+
+if (!$validacao->valida()) {
+  return $response->withRedirect($validacao->retornaURLErros());
+}
+```
 
 ### Utils\TwigUtils\TwigInputs
 

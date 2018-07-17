@@ -1,13 +1,21 @@
-{% extends "baseNav.twig" %} {% block title %} Dashboard {% endblock title %} {% block content %}
+{% extends "baseNav.twig" %} {% block title %} Alterar Senha {% endblock title %} {% block content %}
 
-<h1>Dados do usuário</h1>
-<p>Altere aqui os seu, email, senha ou exclua sua conta de nossa base de dados.</p>
-<p><b>Email: </b></Email:>{{sessao.email}} </p>
-<div class="btn-group" role="group" aria-label="Funções">
-  <a herf="#" class="btn btn-light">Alterar E-mail</a>
-  <a herf="#" class="btn btn-light">Alterar Senha</a>
-  <a herf="#" class="btn btn-light">Excluir Conta</a>
-</div>
-
-
+<h1>Alterar Senha</h1>
+  <form method="POST" action="{{ path_for('usuario-alterar-senha', {'id' : sessao.id}) }}">
+    <div class="form-group">
+      <label for="senhaAtual">Senha Atual:</label>
+      <input type="password" class="form-control" name="senhaAtual" id="senhaAtual" placeholder="Digite sua senha atual...">
+    </div>
+    <div class="form-group">
+      <label for="senhaNova">Nova Senha:</label>
+      <input type="password" name="senhaNova" id="senhaNova" class="form-control" placeholder="Digite a nova senha...">
+    </div>
+    <div class="form-group">
+      <label for="senhaNovaConfirma">Confirmar Nova Senha:</label>
+      <input type="password" name="senhaNovaConfirma" id="senhaNovaConfirma" class="form-control" placeholder="Digite novamente a nova senha...">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </div>
+  </form>
 {% endblock content %}

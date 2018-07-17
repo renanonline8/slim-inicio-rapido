@@ -20,7 +20,7 @@
   <div class="btn-group" role="group" aria-label="Funções">
     <a href="{{ path_for('usuario-form-alterar-dados', { 'id': sessao.id }) }}" class="btn btn-primary">Alterar Dados</a>
     <a href="{{ path_for('usuario-alterar-foto', { 'id': sessao.id }) }}" class="btn btn-primary">Alterar Foto</a>
-    <a href="{{ path_for('usuario-senha', { 'id': sessao.id }) }}" class="btn btn-primary">Alterar Senha</a>
+    <a href="{{ path_for('usuario-form-alterar-senha', { 'id': sessao.id }) }}" class="btn btn-primary">Alterar Senha</a>
     <a href="{{ path_for('usuario-excluir', { 'id': sessao.id }) }}" class="btn btn-danger">Excluir Conta</a>
   </div>
 </div>
