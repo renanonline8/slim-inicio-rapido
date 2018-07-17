@@ -23,5 +23,9 @@
     "6" : {
         "mensagem" : "Ocorreu um erro ao entrar na sessão, tente novmente",
         "tipo" : "danger"
+    },
+    "7" : {
+        "mensagem" : "Dados alterados com sucesso",
+        "tipo" : "success"
     }
 }

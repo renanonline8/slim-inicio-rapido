@@ -18,3 +18,18 @@ Serve para verificar se a algum erro e gerar uma url com os erros para podermos 
 
 Na construção, você deve passar o caminho base do url. Após isso, você deve ser adicionar as regras usando o adiciona(). 
 valida() checa se todas as validações derão certo, e o método retornaURLErros, retorna a URL para ser utilizada no redirecionamento.
+
+### Utils\TwigUtils\TwigInputs
+
+Serve para registrar inputs entre formulários para obte-los em outra tela.
+
+O middleware SessaoNormalMid, sempre verificará se tem inputs e registrará em TwigArgs em dados > inputForm.
+
+#### Método registra($inputs)
+Registras os inputs em $_SESSION['input']. $inputs deve ser um array com os inputs
+
+#### Método retorna()
+Retorna um array com os inputs
+
+#### Método limpa()
+Limpa os inputs em $_SESSION['input'].
