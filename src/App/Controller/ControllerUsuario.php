@@ -93,10 +93,37 @@ final class ControllerUsuario extends Controller
             ) . '?mensagens=9'
         );
     }
+
+    public function formExcluirConta(Request $request, Response $response, Array $args)
+    {
+        return $this->view->render($response, 'usuario-excluir.twig', $this->twigArgs->retArgs());
+    }
     
     public function excluirConta(Request $request, Response $response, Array $args)
     {
-        return $this->view->render($response, 'usuario-excluir.twig', $this->twigArgs->retArgs());
+        $inputs = new \StdClass();
+        $inputs->senhaAtual = $request->getParam('senha');
+
+        $usuario = Usuario::find_by_id_externo($args['id']);
+
+        $validacao = new ValidacaoRedireciona(
+            $this->router->pathFor(
+                'usuario-form-excluir',
+                array ('id' => $args['id'])
+            )
+        );
+
+        $validacao->adicionaRegra($usuario->passwordVerify($inputs->senhaAtual), 5);
+
+        if (!$validacao->valida()) {
+            return $response->withRedirect($validacao->retornaURLErros());
+        }
+
+        $usuario->delete();
+
+        return $response->withRedirect(
+            $this->router->pathFor('login')
+        );
     }
 
     public function alterarFoto(Request $request, Response $response, Array $args)

@@ -20,6 +20,7 @@ $app->group('', function () {
     $this->post('/usuario/alterar_dados/{id}', 'ControllerUsuario:AlterarDados')->setName('usuario-alterar-dados');
     $this->get('/usuario/form_alterar_senha/{id}', 'ControllerUsuario:formAlterarSenha')->setName('usuario-form-alterar-senha');
     $this->post('/usuario/alterar_senha/{id}', 'ControllerUsuario:alterarSenha')->setName('usuario-alterar-senha');
-    $this->get('/usuario/excluir_conta/{id}', 'ControllerUsuario:excluirConta')->setName('usuario-excluir');
+    $this->get('/usuario/form_excluir_conta/{id}', 'ControllerUsuario:formExcluirConta')->setName('usuario-form-excluir');
+    $this->post('/usuario/excluir_conta/{id}', 'ControllerUsuario:excluirConta')->setName('usuario-excluir');
     $this->get('/usuario/alterar_foto/{id}', 'ControllerUsuario:alterarFoto')->setName('usuario-alterar-foto');
 })->add(new SessaoNormalMid($container));
