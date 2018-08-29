@@ -4,6 +4,7 @@ namespace Utils\Upload;
 use \Exception;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Adapter\Local as Adapter;
+use App\Models\Upload as UploadModel;
 
 class Upload
 {
@@ -39,7 +40,11 @@ class Upload
         );
 
         fclose($stream);
+        
+        return $this->has($folder . $filename . '.' . $ext);
+    }
 
-        return $this->fileSystem->has($folder . $filename . '.' . $ext);
+    public function has($path) {
+        return $this->fileSystem->has($path);
     }
 }

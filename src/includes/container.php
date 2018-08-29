@@ -38,5 +38,11 @@ $container['twigArgs'] = function($c) use ($container) {
     return $twigArgs;
 };
 
+$container['upload'] = function($c) use ($container) {
+    $ini = $container->ini->retornaVariaveis();
+    $upload = new \Utils\Upload\Upload(__DIR__ . $ini['upload']['path']);
+    return $upload;
+};
+
 //Controllers
 require_once __DIR__ . '/controllers.php';

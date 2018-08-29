@@ -126,9 +126,13 @@ final class ControllerUsuario extends Controller
         );
     }
 
+    public function formAlterarFoto(Request $request, Response $response, Array $args) {
+        return $this->view->render($response, 'usuario-alterar-foto.twig', $this->twigArgs->retArgs());
+    }
+
     public function alterarFoto(Request $request, Response $response, Array $args)
     {
-        return $this->view->render($response, 'usuario-alterar-foto.twig', $this->twigArgs->retArgs());
+        return $this->response->write('Enviado');
     }
 
     private function obterDadosUsuario() {
