@@ -69,3 +69,11 @@ Retorna um array com os inputs
 
 #### Método limpa()
 Limpa os inputs em $_SESSION['input'].
+
+## Dados de sessão
+É possível obter dados da sessão no template usando a palavra sessao.
+
+Dados disponíveis: id, email
+
+Exemplo:
+{{ sessao.email }} - Retorna o email do usuário da sessão

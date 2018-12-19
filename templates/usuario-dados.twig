@@ -3,7 +3,7 @@
 <h1>Dados do usuário</h1>
 <p>Altere aqui os seu, email, senha ou exclua sua conta de nossa base de dados. </p>
 <div class="row container">
-  <figure class="figure float-left mr-1">
+  <!--<figure class="figure float-left mr-1">
     <img src="{{ dados.usuario.foto ?? './images/user.png' }}" class="figure-img img-fluid" alt="Foto Usuário">
     {% if dados.usuario.foto is null %}
       <figcaption class="figure-caption text-center">
@@ -15,11 +15,16 @@
     <p><b>Nome: </b></Email:>{{dados.usuario.nome}} </p>
     <p><b>Email: </b></Email:>{{dados.usuario.email}} </p>
   </div>
+  -->
+  <div>
+  <p><b>Nome: </b>{{dados.usuario.nome}} </p>
+  <p><b>Email: </b>{{dados.usuario.email}} </p>
+  </div>
 </div>
 <div class="row container">
   <div class="btn-group" role="group" aria-label="Funções">
     <a href="{{ path_for('usuario-form-alterar-dados', { 'id': sessao.id }) }}" class="btn btn-primary">Alterar Dados</a>
-    <a href="{{ path_for('usuario-form-alterar-foto', { 'id': sessao.id }) }}" class="btn btn-primary">Alterar Foto</a>
+    <!--<a href="{{ path_for('usuario-form-alterar-foto', { 'id': sessao.id }) }}" class="btn btn-primary">Alterar Foto</a>-->
     <a href="{{ path_for('usuario-form-alterar-senha', { 'id': sessao.id }) }}" class="btn btn-primary">Alterar Senha</a>
     <a href="{{ path_for('usuario-form-excluir', { 'id': sessao.id }) }}" class="btn btn-danger">Excluir Conta</a>
   </div>
