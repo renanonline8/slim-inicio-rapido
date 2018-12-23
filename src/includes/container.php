@@ -44,5 +44,14 @@ $container['upload'] = function($c) use ($container) {
     return $upload;
 };
 
+$container['swiftTransport'] = function($c) use ($container) {
+    $ini = $container->ini->retornaVariaveis();
+    $transport = (new \Swift_SmtpTransport($ini['swift_mailer']['smtp_url'], $ini['swift_mailer']['smtp_port']))
+        ->setUsername($ini['swift_mailer']['username'])
+        ->setPassword($ini['swift_mailer']['password'])
+    ;
+    return $transport;
+};
+
 //Controllers
 require_once __DIR__ . '/controllers.php';

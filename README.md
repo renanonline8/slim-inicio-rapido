@@ -101,3 +101,8 @@ Dados disponíveis: id, email
 
 Exemplo:
 {{ sessao.email }} - Retorna o email do usuário da sessão
+
+## Envio de e-mail
+Para testes de envio de email foi escolhido o serviço mailTrap
+
+Para envio de email foi escolhido o componente SwiftMailer

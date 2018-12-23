@@ -11,3 +11,7 @@ $container['ControllerDashboard'] = function($c) {
 $container['ControllerUsuario'] = function($c) {
     return new \App\Controller\ControllerUsuario($c);
 };
+
+$container['ControllerTest'] = function($c) {
+    return new \App\Controller\ControllerTest($c);
+};
