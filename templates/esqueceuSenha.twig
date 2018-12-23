@@ -1,6 +1,6 @@
 {% extends "base.twig" %} {% block title %} Esqueci a senha {% endblock title %} {% block content %}
 <div class="container">
-    <form>
+    <form method="POST" action="{{ path_for('enviar-esqueceu-senha') }}">
         <div class="form-group row">
             <h1>Esqueci a senha</h1>
         </div>

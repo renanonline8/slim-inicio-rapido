@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use Utils\Controller\Controller;
+use Utils\URLs\AddMsgUrl;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use App\Models\Usuario;
@@ -24,6 +25,27 @@ final class ControllerLogin extends Controller
     public function esqueceuSenha(Request $request, Response $response, Array $args)
     {
         return $this->view->render($response, 'esqueceuSenha.twig', $this->twigArgs->retArgs());
+    }
+
+    /**
+     * Controller de quando é enviado solicitação de enviar senha
+     *
+     * @param Request $request
+     * @param Response $response
+     * @param Array $args
+     * @return void
+     */
+    public function enviarEsqueceuSenha(Request $request, Response $response, Array $args)
+    {
+        $goTo = $this->router->pathFor('login');
+        $url = new AddMsgUrl($goTo);
+        $url->add('mensagens', 10);
+        $url->add('aviso', 9);
+        $url->add('mensagens', 9);
+        var_dump($url->returnUrl());
+        die();
+        $goTo .= '?mensagens=10';
+        return $response->withRedirect($goTo);
     }
 
     public function entrar(Request $request, Response $response, Array $args)

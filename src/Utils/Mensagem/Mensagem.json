@@ -35,5 +35,9 @@
     "9" : {
         "mensagem" : "Senha alterada com sucesso",
         "tipo" : "success"
+    },
+    "10" : {
+        "mensagem" : "Enviado para e-mail instruções para obter nova senha",
+        "tipo" : "success"
     }
 }
