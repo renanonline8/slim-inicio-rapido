@@ -70,6 +70,30 @@ Retorna um array com os inputs
 #### Método limpa()
 Limpa os inputs em $_SESSION['input'].
 
+### Utils\URLs\ParameterURL
+Permite adicionar e retornar uma URL com parametros de URL
+
+```php
+use Utils\URLs\ParameterURL;
+
+//Rota Base
+$rota = '\teste';
+
+$parameterURL = new ParameterURL($rota);
+
+//Adiciona valor a parametro alpha
+$parameterURL->add('alpha', 'a');
+
+//Adiciona valor b, parametro betha
+$parameterURL->add('betha', 'b');
+
+//Adiciona valor 1, parâmetro alpha
+$parameterURL->add('alpha', 1);
+
+//retorna \teste?&alpha=a%1&betha=b
+echo $parameterURL->returnURL();
+```
+
 ## Dados de sessão
 É possível obter dados da sessão no template usando a palavra sessao.
 

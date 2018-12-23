@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use Utils\Controller\Controller;
-use Utils\URLs\AddMsgUrl;
+use Utils\URLs\ParameterURL;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use App\Models\Usuario;
@@ -38,14 +38,9 @@ final class ControllerLogin extends Controller
     public function enviarEsqueceuSenha(Request $request, Response $response, Array $args)
     {
         $goTo = $this->router->pathFor('login');
-        $url = new AddMsgUrl($goTo);
+        $url = new ParameterURL($goTo);
         $url->add('mensagens', 10);
-        $url->add('aviso', 9);
-        $url->add('mensagens', 9);
-        var_dump($url->returnUrl());
-        die();
-        $goTo .= '?mensagens=10';
-        return $response->withRedirect($goTo);
+        return $response->withRedirect($url->returnUrl());
     }
 
     public function entrar(Request $request, Response $response, Array $args)
