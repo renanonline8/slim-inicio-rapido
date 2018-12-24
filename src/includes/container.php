@@ -46,5 +46,10 @@ $container['swiftTransport'] = function($c) use ($container) {
     return $transport;
 };
 
+$container['forgotPassJwt'] = function ($c) use ($container) {
+    $ini = $container->ini->retornaVariaveis();
+    return new \Utils\ForgotPass\ForgotPassJwt($ini['forgot_pass_jwt']['secret_key']);
+};
+
 //Controllers
 require_once __DIR__ . '/controllers.php';

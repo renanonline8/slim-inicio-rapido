@@ -1,10 +1,13 @@
 <?php
 namespace App\Controller;
 
-use Utils\Controller\Controller;
-use Utils\URLs\ParameterURL;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
+
+use Utils\Controller\Controller;
+use Utils\URLs\ParameterURL;
+use Utils\ForgotPass\ForgotPassJwt;
+
 use App\Models\Usuario;
 use App\Login\LoginSite;
 use App\Sessao\SessaoNormal;
@@ -37,10 +40,72 @@ final class ControllerLogin extends Controller
      */
     public function enviarEsqueceuSenha(Request $request, Response $response, Array $args)
     {
+        //Obter e-mail
+        $email = $request->getParam('email');
+
+        //Obter id externo
+        $user = Usuario::find_by_email($email);
+        $goToError = $this->router->pathFor('login-esqueceu-senha');
+        if (empty($user)){
+            $urlErrorUsr = new ParameterURL($goToError);
+            $urlErrorUsr->add('mensagens', 4);
+            return $response->withRedirect($urlErrorUsr->returnUrl());
+        }
+        $idExt = $user->id_externo;
+
+        //Obter nome
+        $usrName = $user->nome; 
+
+        //Gerar Data atual
+        $date = new \DateTime();
+
+        //Gerar Token
+        $token = $this->forgotPassJwt->createToken($idExt, $date);
+        $url = 
+            $request->getUri()->getScheme() . 
+            '://' . 
+            $request->getUri()->getHost() . 
+            $this->router->pathFor(
+            'nova-senha-esqueceu-senha',
+            ['token' => $token]
+        );
+        
+        //Enviar e-mail
+        $mailer = new \Swift_Mailer($this->swiftTransport);
+        $bodyMessage = 
+                'Segue o link para definir nova senha:
+                <a href="'.$url.'">'.$url.'</a><br />
+                O prazo para definir nova senha é 24 horas';
+        $message = (new \Swift_Message('Recuperar Senha'))
+            ->setFrom(['example@example.org' => 'Example Company'])
+            ->setTo([$email => $usrName])
+            ->setBody($bodyMessage, 'text/html');
+        $result = $mailer->send($message);
+        if(!$result) {
+            $urlErrorEmail = new ParameterURL($goToError);
+            $urlErrorEmail->add('mensagens', 11);
+            return $response->withRedirect($urlErrorEmail->returnUrl());
+        }
+
+        //Redirecionar para pagina de login com mensagem de sucesso
         $goTo = $this->router->pathFor('login');
         $url = new ParameterURL($goTo);
         $url->add('mensagens', 10);
         return $response->withRedirect($url->returnUrl());
+    }
+
+    /**
+     * Controller de página de trocar senha
+     * @todo Implementar formulário...
+     *
+     * @param Request $request
+     * @param Response $response
+     * @param Array $args
+     * @return void
+     */
+    public function novaSenhaEsqueceuSenha(Request $request, Response $response, Array $args)
+    {
+        return $response->write('Trocar senha');
     }
 
     public function entrar(Request $request, Response $response, Array $args)

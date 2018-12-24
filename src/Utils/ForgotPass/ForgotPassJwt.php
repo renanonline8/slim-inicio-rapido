@@ -9,8 +9,10 @@ use App\Models\Usuario;
  * ForgotPassJwt permite gerar token e trocar senha de usuário que esqueceu a senha
  * 
  * Exceções:
- * \Firebase\JWT\ExpiredException | Quando o token estiver expirado
- * Utils\ForgotPass\ExceptionUserNotExist | Quando tentar mudar a senha de um usuário que não existir
+ * 
+ * \Firebase\JWT\ExpiredException - Quando o token estiver expirado
+ * 
+ * Utils\ForgotPass\ExceptionUserNotExist - Quando tentar mudar a senha de um usuário que não existir
  */
 class ForgotPassJwt
 {
@@ -24,7 +26,7 @@ class ForgotPassJwt
     /**
      * Construtor da classe
      *
-     * @param String $key | Codigo secreto do token
+     * @param String $key Codigo secreto do token
      */
     function __construct(String $key)
     {
@@ -34,8 +36,8 @@ class ForgotPassJwt
     /**
      * Cria o token para gerar a senha
      *
-     * @param String $id | Id externo do usuário
-     * @param \DateTime $date | Data de referencia de criação do token
+     * @param String $id Id externo do usuário
+     * @param \DateTime $date Data de referencia de criação do token
      * @return String
      */
     function createToken(String $id, \DateTime $date):String
@@ -55,8 +57,8 @@ class ForgotPassJwt
     /**
      * Troca a senha do usuário
      *
-     * @param [type] $token | Token gerado
-     * @param [type] $newPass | Nova senha
+     * @param [type] $token Token gerado
+     * @param [type] $newPass Nova senha
      * @return void
      */
     function changePassword($token, $newPass)

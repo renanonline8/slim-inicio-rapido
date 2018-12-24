@@ -12,6 +12,7 @@ $app->get('/login', 'ControllerLogin:login')->setName('login');
 $app->get('/login/cadastro', 'ControllerLogin:cadastro')->setName('login-cadastro');
 $app->get('/login/esqueceu_senha', 'ControllerLogin:esqueceuSenha')->setName('login-esqueceu-senha');
 $app->post('/login/esqueceu_senha/enviar', 'ControllerLogin:enviarEsqueceuSenha')->setName('enviar-esqueceu-senha');
+$app->get('/login/esqueceu_senha/nova_senha/{token}', 'ControllerLogin:novaSenhaEsqueceuSenha')->setName('nova-senha-esqueceu-senha');
 $app->post('/login/entrar', 'ControllerLogin:entrar')->setName('entrar');
 $app->post('/login/criar_usuario', 'ControllerLogin:criarUsuario')->setName('criar-usuario');
 $app->get('/login/sair', 'ControllerLogin:sair')->setName('login-sair');

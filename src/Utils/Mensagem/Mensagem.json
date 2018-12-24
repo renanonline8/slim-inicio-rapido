@@ -39,5 +39,9 @@
     "10" : {
         "mensagem" : "Enviado para e-mail instruções para obter nova senha",
         "tipo" : "success"
+    },
+    "11" : {
+        "mensagem" : "Erro no envio de e-mail",
+        "tipo" : "danger"
     }
 }
