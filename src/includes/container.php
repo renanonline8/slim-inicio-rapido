@@ -14,14 +14,7 @@ $container['ini'] = function($c) {
     return $ini;
 };
 
-\ActiveRecord\Config::initialize(function($cfg) use ($container) {
-    $cfg->set_model_directory(__DIR__ . '/../App/Models');
-    $cfg->set_connections(
-        array(
-            'development' => $container->ini->retornaVariaveis()['bd_active_record']['development']
-        )
-    );
-});
+require __DIR__ . '/activerecord.php';
 
 $container['debugLog'] = function($c) use ($container) {
     $varsINI = $container->ini->retornaVariaveis();
