@@ -1,0 +1,21 @@
+{% extends "base.twig" %} {% block title %} Trocar Senha {% endblock title %} {% block content %}
+<div class="container">
+  <h1>Trocar Senha</h1>
+  {{ include('mensagens.twig') }}
+  <form method="Post" action="{{path_for('valida-nova-senha')}}">
+    <div class="form-group">
+      <label for="new_pass">Nova Senha:</label>
+      <input type="password" class="form-control" name="new_pass" id="new_pass" placeholder="Digite a nova senha" required>
+    </div>
+    <div class="form-group">
+      <label for="new_pass_confirm">Confirmar nova senha</label>
+      <input type="password" class="form-control" name="new_pass_confirm" id="new_pass_confirm" placeholder="Confirmar a nova senha" required>
+    </div>
+    <input type="hidden" id="token" name="token" value="{{dados.id_user}}">
+    <button type="submit" class="btn btn-primary">Trocar senha</button>
+  </form>
+</div>
+{% endblock content %}
+{% block script %}
+<script src="{{ base_url() }}/scripts/trocarSenha.js"></script>
+{% endblock script %}

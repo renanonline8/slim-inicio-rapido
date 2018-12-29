@@ -105,7 +105,34 @@ final class ControllerLogin extends Controller
      */
     public function novaSenhaEsqueceuSenha(Request $request, Response $response, Array $args)
     {
-        return $response->write('Trocar senha');
+        $this->twigArgs->adcDados('id_user', $args['token']);
+        return $this->view->render($response, 'trocarSenha.twig', $this->twigArgs->retArgs());
+    }
+
+    public function validaNovaSenha(Request $request, Response $response, Array $args)
+    {
+        $body = $request->getParsedBody();
+
+        $urlError = $this->router->pathFor(
+            'nova-senha-esqueceu-senha', 
+            ['token' => $body['token']]
+        );
+        $errorRedirect = new ParameterURL($urlError);
+
+        try {
+            $this->forgotPassJwt->changePassword(
+                $body['token'], 
+                $body['new_pass']
+            );
+        } catch (\Firebase\JWT\ExpiredException $e) {
+            $errorRedirect->add('mensagens', 12);
+            return $response->withRedirect($errorRedirect->returnUrl());
+        } catch (Utils\ForgotPass\ExceptionUserNotExist $e) {
+            $errorRedirect->add('mensagens', 13);
+            return $response->withRedirect($errorRedirect->returnUrl());
+        }
+        
+        return $response->write('trocado');
     }
 
     public function entrar(Request $request, Response $response, Array $args)

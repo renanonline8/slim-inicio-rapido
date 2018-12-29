@@ -43,5 +43,13 @@
     "11" : {
         "mensagem" : "Erro no envio de e-mail",
         "tipo" : "danger"
+    },
+    "12" : {
+        "mensagem" : "Tempo para troca de senha expirado",
+        "tipo": "danger"
+    },
+    "13" : {
+        "mensagem" : "Usuário não encontrado",
+        "tipo": "danger"
     }
 }
