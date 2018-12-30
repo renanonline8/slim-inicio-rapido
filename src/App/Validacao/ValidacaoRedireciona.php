@@ -8,7 +8,7 @@ final class ValidacaoRedireciona
     
     public function __construct(String $urlErro)
     {
-        $this->response = $response;
+        //$this->response = $response;
         $this->urlErro = $urlErro;
     }
     

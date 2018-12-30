@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
+use Respect\Validation\Validator as v;
 
 use Utils\Controller\Controller;
 use Utils\URLs\ParameterURL;
@@ -96,7 +97,6 @@ final class ControllerLogin extends Controller
 
     /**
      * Controller de página de trocar senha
-     * @todo Implementar formulário...
      *
      * @param Request $request
      * @param Response $response
@@ -109,6 +109,14 @@ final class ControllerLogin extends Controller
         return $this->view->render($response, 'trocarSenha.twig', $this->twigArgs->retArgs());
     }
 
+    /**
+     * Controller de validação de nova senha
+     *
+     * @param Request $request
+     * @param Response $response
+     * @param Array $args
+     * @return void
+     */
     public function validaNovaSenha(Request $request, Response $response, Array $args)
     {
         $body = $request->getParsedBody();
@@ -117,6 +125,18 @@ final class ControllerLogin extends Controller
             'nova-senha-esqueceu-senha', 
             ['token' => $body['token']]
         );
+
+        $validacao = new ValidacaoRedireciona($urlError);
+        $validacao->adicionaRegra(v::stringType()->notEmpty()->validate($body['new_pass']), 14);
+        $validacao->adicionaRegra(
+            v::keyValue('new_pass_confirm', 'equals', 'new_pass')->validate($body),
+            8
+        );
+
+        if (!$validacao->valida()) {
+            return $response->withRedirect($validacao->retornaURLErros());
+        }
+
         $errorRedirect = new ParameterURL($urlError);
 
         try {
@@ -132,7 +152,9 @@ final class ControllerLogin extends Controller
             return $response->withRedirect($errorRedirect->returnUrl());
         }
         
-        return $response->write('trocado');
+        return $response->withRedirect(
+            $this->router->pathFor('login')
+        );
     }
 
     public function entrar(Request $request, Response $response, Array $args)
