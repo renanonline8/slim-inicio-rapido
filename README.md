@@ -94,6 +94,26 @@ $parameterURL->add('alpha', 1);
 echo $parameterURL->returnURL();
 ```
 
+## Proteção CSRF
+Para evitar ataques CSRF, utilizamos o componente slim/csrf.
+
+Em cada controller de formulário deve ser colocado o seguinte trecho de código antes do render.
+
+```php
+$csrf = new ArrayCSRF(
+  $this->csrf->getTokenNameKey(),
+  $this->csrf->getTokenValueKey(),
+  $request
+);
+$this->twigArgs->adcDados('csrf', $csrf->getCSRF());
+```
+
+No template do controller, deve-se colocar o seguinte código.
+
+```twig
+{{ include('includes/csrf.twig') }}
+```
+
 ## Dados de sessão
 É possível obter dados da sessão no template usando a palavra sessao.
 
@@ -106,3 +126,4 @@ Exemplo:
 Para testes de envio de email foi escolhido o serviço mailTrap
 
 Para envio de email foi escolhido o componente SwiftMailer
+
