@@ -13,6 +13,7 @@
         <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required autofocus>
         <label for="senha" class="sr-only">Password</label>
         <input type="password" id="senha" name="senha" class="form-control" placeholder="Password" required>
+        {{ include('includes/csrf.twig') }}
         <button class="btn btn-lg btn-primary btn-block" type="submit">Entre</button>
         <a name="" id="" class="btn btn-secondary btn-block btn-lg" href="login/cadastro" role="button">Cadastre-se</a>
         <a href="login/esqueceu_senha" class="">Esqueceu a senha?</a>

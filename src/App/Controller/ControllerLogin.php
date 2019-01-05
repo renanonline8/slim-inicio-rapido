@@ -13,11 +13,18 @@ use App\Models\Usuario;
 use App\Login\LoginSite;
 use App\Sessao\SessaoNormal;
 use App\Validacao\ValidacaoRedireciona;
+use App\CSRF\ArrayCSRF;
 
 final class ControllerLogin extends Controller
 {
     public function login(Request $request, Response $response, Array $args)
     {
+        $csrf = new ArrayCSRF(
+            $this->csrf->getTokenNameKey(),
+            $this->csrf->getTokenValueKey(),
+            $request
+        );
+        $this->twigArgs->adcDados('csrf', $csrf->getCSRF());
         return $this->view->render($response, 'login.twig', $this->twigArgs->retArgs());
     }
 

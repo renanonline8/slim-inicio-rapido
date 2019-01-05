@@ -3,8 +3,10 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \App\Middleware\SessaoNormalMid;
 use \App\Middleware\MensagemMid;
+use \Slim\Csrf\Guard;
 
 $app->add(new MensagemMid($container));
+$app->add(new Guard);
 
 $app->get('/tests/email', 'ControllerTest:sendEmail')->setName('test-email');
 

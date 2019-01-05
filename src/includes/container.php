@@ -51,5 +51,9 @@ $container['forgotPassJwt'] = function ($c) use ($container) {
     return new \Utils\ForgotPass\ForgotPassJwt($ini['forgot_pass_jwt']['secret_key']);
 };
 
+$container['csrf'] = function ($c) use ($container) {
+    return new \Slim\Csrf\Guard();
+};
+
 //Controllers
 require_once __DIR__ . '/controllers.php';
