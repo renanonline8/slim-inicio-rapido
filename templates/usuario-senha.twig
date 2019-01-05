@@ -2,6 +2,7 @@
 
 <h1>Alterar Senha</h1>
   <form method="POST" action="{{ path_for('usuario-alterar-senha', {'id' : sessao.id}) }}">
+    {{ include('includes/csrf.twig') }}
     <div class="form-group">
       <label for="senhaAtual">Senha Atual:</label>
       <input type="password" class="form-control" name="senhaAtual" id="senhaAtual" placeholder="Digite sua senha atual...">

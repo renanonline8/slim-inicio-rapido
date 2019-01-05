@@ -6,6 +6,7 @@
 </div>
 
 <form method="POST" action="{{ path_for('usuario-excluir', { 'id': sessao.id }) }}">
+  {{ include('includes/csrf.twig') }}
   <div class="form-group">
     <label for="senha" class="col-sm-12 col-form-label">Senha:</label>
     <input type="password" class="form-control" name="senha" id="senha" placeholder="Digite sua senha..." required>

@@ -1,6 +1,7 @@
 {% extends "base.twig" %} {% block title %} Esqueci a senha {% endblock title %} {% block content %}
 <div class="container">
     <form method="POST" action="{{ path_for('enviar-esqueceu-senha') }}">
+        {{ include('includes/csrf.twig') }}
         <div class="form-group row">
             <h1>Esqueci a senha</h1>
         </div>

@@ -30,11 +30,23 @@ final class ControllerLogin extends Controller
 
     public function cadastro(Request $request, Response $response, Array $args)
     {
+        $csrf = new ArrayCSRF(
+            $this->csrf->getTokenNameKey(),
+            $this->csrf->getTokenValueKey(),
+            $request
+        );
+        $this->twigArgs->adcDados('csrf', $csrf->getCSRF());
         return $this->view->render($response, 'cadastro.twig', $this->twigArgs->retArgs());
     }
 
     public function esqueceuSenha(Request $request, Response $response, Array $args)
     {
+        $csrf = new ArrayCSRF(
+            $this->csrf->getTokenNameKey(),
+            $this->csrf->getTokenValueKey(),
+            $request
+        );
+        $this->twigArgs->adcDados('csrf', $csrf->getCSRF());
         return $this->view->render($response, 'esqueceuSenha.twig', $this->twigArgs->retArgs());
     }
 
@@ -112,6 +124,12 @@ final class ControllerLogin extends Controller
      */
     public function novaSenhaEsqueceuSenha(Request $request, Response $response, Array $args)
     {
+        $csrf = new ArrayCSRF(
+            $this->csrf->getTokenNameKey(),
+            $this->csrf->getTokenValueKey(),
+            $request
+        );
+        $this->twigArgs->adcDados('csrf', $csrf->getCSRF());
         $this->twigArgs->adcDados('id_user', $args['token']);
         return $this->view->render($response, 'trocarSenha.twig', $this->twigArgs->retArgs());
     }

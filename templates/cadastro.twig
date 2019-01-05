@@ -1,6 +1,7 @@
 {% extends "base.twig" %} {% block title %} Cadastre-se {% endblock title %} {% block content %}
 <div class="container">
     <form method="POST" action="criar_usuario">
+        {{ include('includes/csrf.twig') }}
         <div class="form-group row">
             <h1>Crie seu login!</h1>
         </div>

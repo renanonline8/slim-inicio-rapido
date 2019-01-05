@@ -8,6 +8,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use App\Models\Usuario;
 use Respect\Validation\Validator as v;
 use App\Validacao\ValidacaoRedireciona;
+use App\CSRF\ArrayCSRF;
 
 final class ControllerUsuario extends Controller
 {
@@ -19,6 +20,12 @@ final class ControllerUsuario extends Controller
     
     public function formAlterarDados(Request $request, Response $response, Array $args)
     {
+        $csrf = new ArrayCSRF(
+            $this->csrf->getTokenNameKey(),
+            $this->csrf->getTokenValueKey(),
+            $request
+        );
+        $this->twigArgs->adcDados('csrf', $csrf->getCSRF());
         $this->twigArgs->adcDados('usuario', $this->obterDadosUsuario());
         return $this->view->render($response, 'usuario-alterar-dados.twig', $this->twigArgs->retArgs());
     }
@@ -45,6 +52,12 @@ final class ControllerUsuario extends Controller
     
     public function formAlterarSenha(Request $request, Response $response, Array $args)
     {
+        $csrf = new ArrayCSRF(
+            $this->csrf->getTokenNameKey(),
+            $this->csrf->getTokenValueKey(),
+            $request
+        );
+        $this->twigArgs->adcDados('csrf', $csrf->getCSRF());
         return $this->view->render($response, 'usuario-senha.twig', $this->twigArgs->retArgs());
     }
     
@@ -96,6 +109,12 @@ final class ControllerUsuario extends Controller
 
     public function formExcluirConta(Request $request, Response $response, Array $args)
     {
+        $csrf = new ArrayCSRF(
+            $this->csrf->getTokenNameKey(),
+            $this->csrf->getTokenValueKey(),
+            $request
+        );
+        $this->twigArgs->adcDados('csrf', $csrf->getCSRF());
         return $this->view->render($response, 'usuario-excluir.twig', $this->twigArgs->retArgs());
     }
     
@@ -126,7 +145,14 @@ final class ControllerUsuario extends Controller
         );
     }
 
-    public function formAlterarFoto(Request $request, Response $response, Array $args) {
+    public function formAlterarFoto(Request $request, Response $response, Array $args) 
+    {
+        $csrf = new ArrayCSRF(
+            $this->csrf->getTokenNameKey(),
+            $this->csrf->getTokenValueKey(),
+            $request
+        );
+        $this->twigArgs->adcDados('csrf', $csrf->getCSRF());
         return $this->view->render($response, 'usuario-alterar-foto.twig', $this->twigArgs->retArgs());
     }
 

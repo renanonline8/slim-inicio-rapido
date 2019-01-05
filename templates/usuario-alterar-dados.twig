@@ -2,6 +2,7 @@
 
 <h1>Alterar dados do usuário</h1>
 <form method="POST" action="{{ path_for('usuario-alterar-dados', { 'id': dados.usuario.id_externo }) }}">
+  {{ include('includes/csrf.twig') }}
   <div class="form-group">
     <label for="nome">Nome: </label>
     <input type="text" class="form-control" name="nome" id="nome" value="{{ dados.inputForm.nome ?? dados.usuario.nome }}" required>

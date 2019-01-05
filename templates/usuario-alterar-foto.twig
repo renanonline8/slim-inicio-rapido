@@ -1,6 +1,7 @@
 {% extends "baseNav.twig" %} {% block title %} Alterar foto do usuário {% endblock title %} {% block content %}
 <h1>Alterar foto do usuário</h1>
-<form method="POST" action="{{path_for('usuario-alterar-foto', {'id' : sessao.id})}}
+<form method="POST" action="{{ path_for('usuario-alterar-foto', {'id' : sessao.id}) }}">
+    {{ include('includes/csrf.twig') }}
     <div class="form-group">
         <label for="photo">Foto:</label>
         <input type="file" class="form-control-file" id='photo'>

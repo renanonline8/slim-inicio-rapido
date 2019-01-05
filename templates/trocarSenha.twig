@@ -3,6 +3,7 @@
   <h1>Trocar Senha</h1>
   {{ include('mensagens.twig') }}
   <form method="Post" action="{{path_for('valida-nova-senha')}}">
+    {{ include('includes/csrf.twig') }}
     <div class="form-group">
       <label for="new_pass">Nova Senha:</label>
       <input type="password" class="form-control" name="new_pass" id="new_pass" placeholder="Digite a nova senha" required>
