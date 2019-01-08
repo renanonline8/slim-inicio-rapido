@@ -23,7 +23,7 @@ class TwigInputs
      */
     public function retorna()
     {
-        return $_SESSION['input'];
+        return !empty($_SESSION['input']) ? $_SESSION['input'] : null ;
     }
 
     /**
